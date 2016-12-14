@@ -38,5 +38,41 @@ var app = angular.module('scopeExample', [])
 //    $scope.aaa = Avenger;
 //}]);
 
-//lesson9-------------------------------------
+//lesson10-------------------------------------
+//app.directive("super",function(){
+//    return{
+//        restrict:"A",
+//        template:"<div>Here I am</div>",
+//        link: function(){
+//            alert('this is a worker');
+//        }
+//    }
+//});
+//
+//app.directive("flash",function(){
+//    return{
+//        restrict:"A",
+//        link: function(){
+//            alert('this is a faster');
+//        }
+//    }
+//});
+//A for direct,C for class,M for comment, E for element
 
+//lesson 12 ----------------------
+
+app.directive("enter",function(){
+    return function (scope,element){
+        element.bind("mouseenter",function(){
+            console.log("entering")
+        })
+    }
+});
+
+app.directive("leave",function(){
+    return function (scope,element){
+        element.bind("mouseleave",function(){
+            console.log("leaving")
+        })
+    }
+});
