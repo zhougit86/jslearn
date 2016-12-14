@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css"  />
+    <script src="angular.min.js"></script>
+    <script src="angular.js"></script>
+
+</head>
+
+
+<body>
+
+<div ng-app="scopeExample">
+
+    <div ng-controller="test1">
+        <input ng-model="data.message">
+        {{data.message}}
+    </div>
+
+    <div ng-controller="test2">
+        <input ng-model="data.message">
+        {{data.message|reverse}}
+    </div>
+</div>
+
+</body>
+</html>

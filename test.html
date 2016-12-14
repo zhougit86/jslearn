@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="myScript.js"></script>
+</head>
+<body>
+
+<h1>My Web Page</h1>
+
+<p id="demo">A Paragraph.</p>
+
+<div id="myDIV">A DIV.</div>
+<script>
+    document.write(location.href);
+
+    for(var i=0;i<6;i++){
+        var v;
+        if(i<3){
+            v="c";
+        }
+        document.writeln(v)
+    }
+</script>
+<br>
+<button type="button" onmouseover="myFunction('demo')">Try it</button>
+
+</body>
+</html>
