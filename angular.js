@@ -99,58 +99,78 @@ var app = angular.module('scopeExample', [])
 //});
 
 
-app.directive("superhero",function(){
+//app.directive("superhero",function(){
+//    return{
+//        restrict:"E",
+//        scope:{},
+//
+//        controller:function($scope){
+//            $scope.abilities=[];
+//
+//            this.addStr = function(){
+//                $scope.abilities.push("str")
+//            };
+//
+//            this.addSpd = function(){
+//                $scope.abilities.push("spd")
+//            };
+//
+//            this.addFlt = function(){
+//                $scope.abilities.push("flt")
+//            };
+//        },
+//        link: function(scope,element){
+//            element.addClass('effect');
+//            element.bind("mouseenter",function(){
+//                console.log(scope.abilities);
+//            })
+//        }
+//    }
+//});
+//
+//app.directive("strength",function(){
+//    return{
+//        require:"superhero",
+//        link: function(scope,element,attrs,superheroCtrl){
+//            superheroCtrl.addStr();
+//        }
+//    }
+//});
+//
+//app.directive("speed",function(){
+//    return{
+//        require:"superhero",
+//        link: function(scope,element,attrs,superheroCtrl){
+//            superheroCtrl.addSpd();
+//        }
+//    }
+//});
+//
+//app.directive("flight",function(){
+//    return{
+//        require:"superhero",
+//        link: function(scope,element,attrs,superheroCtrl){
+//            superheroCtrl.addFlt();
+//        }
+//    }
+//});
+
+//lesson16-----------------------------
+
+app.controller("chorectrl",function($scope){
+    $scope.logChore = function(chore){
+        alert(chore);
+    }
+});
+
+app.directive("kid",function(){
     return{
         restrict:"E",
-        scope:{},
-
-        controller:function($scope){
-            $scope.abilities=[];
-
-            this.addStr = function(){
-                $scope.abilities.push("str")
-            };
-
-            this.addSpd = function(){
-                $scope.abilities.push("spd")
-            };
-
-            this.addFlt = function(){
-                $scope.abilities.push("flt")
-            };
+        scope:{
+            done:"&"
         },
-        link: function(scope,element){
-            element.addClass('effect');
-            element.bind("mouseenter",function(){
-                console.log(scope.abilities);
-            })
-        }
-    }
-});
-
-app.directive("strength",function(){
-    return{
-        require:"superhero",
-        link: function(scope,element,attrs,superheroCtrl){
-            superheroCtrl.addStr();
-        }
-    }
-});
-
-app.directive("speed",function(){
-    return{
-        require:"superhero",
-        link: function(scope,element,attrs,superheroCtrl){
-            superheroCtrl.addSpd();
-        }
-    }
-});
-
-app.directive("flight",function(){
-    return{
-        require:"superhero",
-        link: function(scope,element,attrs,superheroCtrl){
-            superheroCtrl.addFlt();
-        }
+        template:"<input type='text' ng-model='chore'> " +
+        "{{chore}}" +
+        "<div class='effect' ng-click='done({chore:chore})'>submit</div>"
     }
 });
