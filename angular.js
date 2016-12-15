@@ -4,6 +4,7 @@
 var app = angular.module('scopeExample', [])
 
 //lesson 1--------------------------
+
 //app.factory('Data',function(){
 //   return {message:"test"}
 //});
@@ -27,7 +28,7 @@ var app = angular.module('scopeExample', [])
 //}]);
 
 //lesson 8-------------------------------------------------
-//
+
 //app.factory('Avenger',function(){
 //    var Avenger = {};
 //    Avenger.cast=[{'name':1},{'name':2},{'name':3},{'name':4}];
@@ -80,19 +81,76 @@ var app = angular.module('scopeExample', [])
 //});
 
 
-//lesson14-----------------------------------------
+//lesson14~15-----------------------------------------
 
-app.controller('AppCtrl', ['$scope', function($scope) {
-        $scope.loadMoreTwit = function () {
-            alert("Load the twit");
+//app.controller('AppCtrl', ['$scope', function($scope) {
+//        $scope.loadMoreTwit = function () {
+//            alert("Load the twit");
+//        }
+//    }]);
+//
+//app.directive("enter",function(){
+//    return function (scope,element,attrs){
+//        element.bind("mouseenter",function(){
+//            //console.log("entering")
+//            scope.$apply(attrs.enter)
+//        })
+//    }
+//});
+
+
+app.directive("superhero",function(){
+    return{
+        restrict:"E",
+        scope:{},
+
+        controller:function($scope){
+            $scope.abilities=[];
+
+            this.addStr = function(){
+                $scope.abilities.push("str")
+            };
+
+            this.addSpd = function(){
+                $scope.abilities.push("spd")
+            };
+
+            this.addFlt = function(){
+                $scope.abilities.push("flt")
+            };
+        },
+        link: function(scope,element){
+            element.addClass('effect');
+            element.bind("mouseenter",function(){
+                console.log(scope.abilities);
+            })
         }
-    }]);
+    }
+});
 
-app.directive("enter",function(){
-    return function (scope,element,attrs){
-        element.bind("mouseenter",function(){
-            //console.log("entering")
-            scope.$apply(attrs.enter)
-        })
+app.directive("strength",function(){
+    return{
+        require:"superhero",
+        link: function(scope,element,attrs,superheroCtrl){
+            superheroCtrl.addStr();
+        }
+    }
+});
+
+app.directive("speed",function(){
+    return{
+        require:"superhero",
+        link: function(scope,element,attrs,superheroCtrl){
+            superheroCtrl.addSpd();
+        }
+    }
+});
+
+app.directive("flight",function(){
+    return{
+        require:"superhero",
+        link: function(scope,element,attrs,superheroCtrl){
+            superheroCtrl.addFlt();
+        }
     }
 });

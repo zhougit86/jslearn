@@ -6,6 +6,7 @@
 
 
 .effect{
-    border: 5px solid #8affc1;
+    border: 2px solid #8affc1;
+    background-color: antiquewhite;
     margin: 3px;
 }
