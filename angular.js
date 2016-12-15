@@ -61,20 +61,38 @@ var app = angular.module('scopeExample', [])
 
 //lesson 12 ----------------------
 
+//app.directive("enter",function(){
+//    return function (scope,element){
+//        element.bind("mouseenter",function(){
+//            //console.log("entering")
+//            element.addClass("effect");
+//        })
+//    }
+//});
+//
+//app.directive("leave",function(){
+//    return function (scope,element){
+//        element.bind("mouseleave",function(){
+//            //console.log("leaving")
+//            element.removeClass("effect");
+//        })
+//    }
+//});
+
+
+//lesson14-----------------------------------------
+
+app.controller('AppCtrl', ['$scope', function($scope) {
+        $scope.loadMoreTwit = function () {
+            alert("Load the twit");
+        }
+    }]);
+
 app.directive("enter",function(){
-    return function (scope,element){
+    return function (scope,element,attrs){
         element.bind("mouseenter",function(){
             //console.log("entering")
-            element.addClass("effect");
-        })
-    }
-});
-
-app.directive("leave",function(){
-    return function (scope,element){
-        element.bind("mouseleave",function(){
-            //console.log("leaving")
-            element.removeClass("effect");
+            scope.$apply(attrs.enter)
         })
     }
 });
