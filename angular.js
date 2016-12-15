@@ -157,20 +157,37 @@ var app = angular.module('scopeExample', [])
 
 //lesson16-----------------------------
 
-app.controller("chorectrl",function($scope){
-    $scope.logChore = function(chore){
-        alert(chore);
-    }
+//app.controller("chorectrl",function($scope){
+//    $scope.logChore = function(chore){
+//        alert(chore);
+//    }
+//});
+//
+//app.directive("kid",function(){
+//    return{
+//        restrict:"E",
+//        scope:{
+//            done:"&"
+//        },
+//        template:"<input type='text' ng-model='chore'> " +
+//        "{{chore}}" +
+//        "<div class='effect' ng-click='done({chore:chore})'>submit</div>"
+//    }
+//});
+
+//lesson17--------------------------------
+app.controller("AppCtrl",function($scope){
+    $scope.ctrlFlavor="blank"
 });
 
-app.directive("kid",function(){
+app.directive("drink",function(){
     return{
-        restrict:"E",
         scope:{
-            done:"&"
+            flavor:"@"
         },
-        template:"<input type='text' ng-model='chore'> " +
-        "{{chore}}" +
-        "<div class='effect' ng-click='done({chore:chore})'>submit</div>"
+        template:"<div>{{flavor}}</div>"
+        //link:function(scope,element,attrs){
+        //    scope.flavor = attrs.flavor;
+        //}
     }
 });
