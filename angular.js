@@ -64,7 +64,8 @@ var app = angular.module('scopeExample', [])
 app.directive("enter",function(){
     return function (scope,element){
         element.bind("mouseenter",function(){
-            console.log("entering")
+            //console.log("entering")
+            element.addClass("effect");
         })
     }
 });
@@ -72,7 +73,8 @@ app.directive("enter",function(){
 app.directive("leave",function(){
     return function (scope,element){
         element.bind("mouseleave",function(){
-            console.log("leaving")
+            //console.log("leaving")
+            element.removeClass("effect");
         })
     }
 });
